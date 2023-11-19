@@ -8,23 +8,25 @@
     <!-- my stylesheet -->
     <link rel="stylesheet" href="css/style.css">
 
-    <!-- fonts -->
+    <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- style cdn icons -->
+
+    <!-- icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- vue js  -->
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
+    <!-- vue js -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <title>Boolzapp</title>
 </head>
 
 
 <body>
 
-    <div id="boolzapp">
+    <div id="app">
+
         <!-- wrapper app -->
         <main class="wrapper-app">
 
@@ -37,8 +39,15 @@
                 <div class="contacts">
                     <header>
                         <div class="img-header">
-                            <img src="img/avatar_io.jpg" alt="">
+                            <img src="img/avatar_7.jpg" alt="">
+                            <div>
+                                <h5 class="name">Alexander</h5>
+                            </div>
+
+
                         </div>
+
+
 
                         <div class="icons-header">
                             <a href=""><i class="fa-solid fa-circle-notch"></i></a>
@@ -67,7 +76,8 @@
                             <div class="btn-search">
 
                                 <p><i class="fa-solid fa-magnifying-glass"></i></p>
-                                <input type="search" placeholder="Cerca o inizia una nuova chat">
+                                <input type="text" class="contacts-input" v-model="search"
+                                    placeholder="Cerca o inizia una nuova chat"></input>
 
                             </div>
 
@@ -86,191 +96,28 @@
 
                             <!-- columns     -->
 
-                            <div class="col">
+                            <div class="col" v-for="(person,index) in filteredResult" @click="activeContact = index"
+                                :class="(index == activeContact) ? 'active' : '' ">
 
-                                <!-- immage avatar -->
+
                                 <div class="avatar">
-                                    <img src="img/avatar_1.jpg" alt="">
+                                    <img :src="person.avatar" alt="">
                                 </div>
 
-                                <!-- text messages -->
+
 
                                 <div class="text-preview">
                                     <div class="name-cont">
-                                        <h5>Michele L.</h5>
-                                        <p class="small-text">lorem ipsum</p>
+                                        <h5 class="">{{person.name}}</h5>
+                                        <p class="small-text">ultimo messaggio inviato</p>
                                     </div>
                                     <div class="hour">
-                                        <p class="smaller-text">16.45</p>
+                                        <p class="smaller-text">12.45</p>
                                     </div>
                                 </div>
+
                             </div>
 
-                            <div class="col">
-                                <div class="avatar">
-                                    <img src="img/avatar_2.jpg" alt="">
-                                </div>
-                                <div class="text-preview">
-                                    <div class="name-cont">
-                                        <h5>Lara M.</h5>
-                                        <p class="small-text">lorem ipsum</p>
-                                    </div>
-                                    <div class="hour">
-                                        <p class="smaller-text">18.43</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col">
-                                <div class="avatar">
-                                    <img src="img/avatar_6.jpg" alt="">
-                                </div>
-                                <div class="text-preview">
-                                    <div class="name-cont">
-                                        <h5>Ilaria &hearts; </h5>
-                                        <p class="small-text">lorem ipsum</p>
-                                    </div>
-                                    <div class="hour">
-                                        <p class="smaller-text">20.24</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col">
-                                <div class="avatar">
-                                    <img src="img/avatar_4.jpg" alt="">
-                                </div>
-                                <div class="text-preview">
-                                    <div class="name-cont">
-                                        <h5>Mamma</h5>
-                                        <p class="small-text">lorem ipsum</p>
-                                    </div>
-                                    <div class="hour">
-                                        <p class="smaller-text">04.32</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col">
-                                <div class="avatar">
-                                    <img src="img/avatar_5.jpg" alt="">
-                                </div>
-                                <div class="text-preview">
-                                    <div class="name-cont">
-                                        <h5>Boolean Careers</h5>
-                                        <p class="small-text">lorem ipsum</p>
-                                    </div>
-                                    <div class="hour">
-                                        <p class="smaller-text">18.01</p>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="col">
-                                <div class="avatar">
-                                    <img src="img/avatar_3.jpg" alt="">
-                                </div>
-                                <div class="text-preview">
-                                    <div class="name-cont">
-                                        <h5>Fabio</h5>
-                                        <p class="small-text">lorem ipsum</p>
-                                    </div>
-                                    <div class="hour">
-                                        <p class="smaller-text">16.55</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col">
-                                <div class="avatar">
-                                    <img src="img/avatar_7.jpg" alt="">
-                                </div>
-                                <div class="text-preview">
-                                    <div class="name-cont">
-                                        <h5>Monica</h5>
-                                        <p class="small-text">lorem ipsum</p>
-                                    </div>
-                                    <div class="hour">
-                                        <p class="smaller-text">Ieri</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col">
-                                <div class="avatar">
-                                    <img src="img/avatar_8.jpg" alt="">
-                                </div>
-                                <div class="text-preview">
-                                    <div class="name-cont">
-                                        <h5>Maria</h5>
-                                        <p class="small-text">lorem ipsum</p>
-                                    </div>
-                                    <div class="hour">
-                                        <p class="smaller-text">Ieri</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col">
-                                <div class="avatar">
-                                    <img src="img/avatar_5.jpg" alt="">
-                                </div>
-                                <div class="text-preview">
-                                    <div class="name-cont">
-                                        <h5>Maverick</h5>
-                                        <p class="small-text">lorem ipsum</p>
-                                    </div>
-                                    <div class="hour">
-                                        <p class="smaller-text">Ieri</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col">
-                                <div class="avatar">
-                                    <img src="img/avatar_2.jpg" alt="">
-                                </div>
-                                <div class="text-preview">
-                                    <div class="name-cont">
-                                        <h5>Enrico</h5>
-                                        <p class="small-text">lorem ipsum</p>
-                                    </div>
-                                    <div class="hour">
-                                        <p class="smaller-text">Ieri</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col">
-                                <div class="avatar">
-                                    <img src="img/avatar_8.jpg" alt="">
-                                </div>
-                                <div class="text-preview">
-                                    <div class="name-cont">
-                                        <h5>Lorenzo</h5>
-                                        <p class="small-text">lorem ipsum</p>
-                                    </div>
-                                    <div class="hour">
-                                        <p class="smaller-text">Ieri</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col">
-                                <div class="avatar">
-                                    <img src="img/avatar_3.jpg" alt="">
-                                </div>
-                                <div class="text-preview">
-                                    <div class="name-cont">
-                                        <h5>Michele L.</h5>
-                                        <p class="small-text">lorem ipsum</p>
-                                    </div>
-                                    <div class="hour">
-                                        <p class="smaller-text">Ieri</p>
-                                    </div>
-                                </div>
-                            </div>
 
                         </div>
                     </div>
@@ -288,13 +135,14 @@
 
                         <div class="chat-avatar">
                             <div class="img-header">
-                                <img src="img/avatar_1.jpg" alt="">
+                                <img :src="filteredResult[activeContact].avatar" alt="">
                             </div>
 
                             <div class="details">
                                 <div class="name-cont">
-                                    <h5>Lorenzo</h5>
+                                    <h5 class="">{{filteredResult[activeContact].name}}</h5>
                                     <p class="small-text">Ultimo accesso oggi alle 12.23</p>
+
                                 </div>
 
                             </div>
@@ -312,102 +160,43 @@
 
                     <!-- main of my text area -->
 
-                    <section class="container-disp-messages">
-
-                        <div class="row">
-                            <div class="messages-disp-left">
-
-                                <div class="inside-mex">
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                                </div>
 
 
-                                <div class="active">
-                                    <div class="chevron">
-                                        <p><i class="fa-solid fa-chevron-down"></i></p>
-                                        <div class="hiden">
-                                            <p>cancella messaggio</p>
-                                            <p>modifica messaggio</p>
-                                        </div>
+                    <section class="messages-wrapper">
+
+                        <div class="container-disp-messages">
+                            <div class="row">
+                                
+                                <div class="inside-mex" v-for="(message) in filteredResult[activeContact].messages"
+                                    :class="message.status == 'sent' ? 'sent': 'received' ">{{message.message}}
+
+                                <div class="active-mex">
+                                <div class="chevron">
+                                    <p><i class="fa-solid fa-chevron-down"></i></p>
+                                    <div class="hiden">
+                                        <p>cancella messaggio</p>
+                                        <p>modifica messaggio</p>
                                     </div>
-
-                                    <p class="smaller-text">16.43</p>
                                 </div>
 
+                                <p class="smaller-text">16.43</p>
                             </div>
-
-                            <div class="messages-disp-right">
-
-                                <div class="inside-mex">
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor, sit
-                                        amet
-                                        consectetur adipisicing elit. Minima, ratione architecto.</p>
-                                </div>
-
-                                <div class="active">
-                                    <div class="chevron">
-                                        <p><i class="fa-solid fa-chevron-down"></i></p>
-                                        <div class="hiden">
-                                            <p>cancella messaggio</p>
-                                            <p>modifica messaggio</p>
-                                        </div>
-                                    </div>
-
-                                    <p class="smaller-text">16.43</p>
-                                </div>
-
                             </div>
-
-
-                            <div class="messages-disp-left">
-
-                                <div class="inside-mex">
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                                </div>
-
-
-                                <div class="active">
-                                    <div class="chevron">
-                                        <p><i class="fa-solid fa-chevron-down"></i></p>
-                                        <div class="hiden">
-                                            <p>cancella messaggio</p>
-                                            <p>modifica messaggio</p>
-                                        </div>
-                                    </div>
-
-                                    <p class="smaller-text">16.43</p>
-                                </div>
-
-
                             </div>
-
-                            <div class="messages-disp-right">
-
-                                <div class="inside-mex">
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor, sit
-                                        amet
-                                        consectetur adipisicing elit. Minima, ratione architecto.</p>
-                                </div>
-
-
-                                <div class="active">
-                                    <div class="chevron">
-                                        <p><i class="fa-solid fa-chevron-down"></i></p>
-                                        <div class="hiden">
-                                            <p>cancella messaggio</p>
-                                            <p>modifica messaggio</p>
-                                        </div>
-                                    </div>
-
-                                    <p class="smaller-text">16.43</p>
-                                </div>
-
-                            </div>
-
                         </div>
+
+
+
+
+
                     </section>
 
-                    <!-- footer of my text area -->
+
+
+
+
+
+                    <!-- footer texting area -->
 
 
                     <footer class="footer-mex">
@@ -415,7 +204,7 @@
                         <a class="emoji"><i class="fa-regular fa-face-smile"></i></a>
 
                         <div class="text-bar">
-                            <input type="text" placeholder="Scrivi un messaggio">
+                            <input type="text" v-model="newMessage" @keydown.enter=" addNewMessage(newMessage)">
                         </div>
 
                         <a class="mic"><i class="fa-solid fa-microphone"></i></a>
@@ -426,7 +215,6 @@
             </div>
         </main>
     </div>
-
 
     <script src="js/script.js"></script>
 </body>

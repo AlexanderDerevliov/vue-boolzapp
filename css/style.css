@@ -20,6 +20,8 @@ input:focus-visible {
     
 }
 
+ul li {list-style-type: none;}
+
 a {
     color: inherit;
     text-decoration: none;
@@ -87,8 +89,18 @@ a {
     height: 50px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     background-color: rgb(215, 212, 217);  
     border: 0.6px solid rgb(151, 151, 151);  
+}
+.contacts .name {
+    
+    font-size: 1rem;  
+}
+.img-header {
+    display: flex;
+    align-items: center;
+    gap: .4rem;
 }
 
 .icons-header i {
@@ -224,7 +236,7 @@ a {
 }
 
 
-.texting-area section {
+.messages-wrapper {
     width: 100%;
     flex-grow: 1;
     overflow-y: scroll;
@@ -232,7 +244,11 @@ a {
 
 }
 
+
+
 /* DISPLAY MESSAGES */
+
+
 .container-disp-messages{
     display: flex;
     align-items: center;
@@ -243,9 +259,10 @@ a {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    margin-top: 3rem;
 }
 
-.messages-disp-right {
+.sent {
     min-width: 40%;
     max-width: 55%;
     margin-right: 2rem;
@@ -259,7 +276,7 @@ a {
 
 }
 
-.messages-disp-left {
+.received {
     min-width: 40%;
     max-width: 55%;
     margin-left: 2rem;
@@ -270,14 +287,19 @@ a {
     justify-content: center;
     position: relative;
 }
-
-
 .inside-mex {
     width: 95%;
     padding: .5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 40px;
 }
 
-.active {
+
+
+.active-mex {
+    min-height: 40px;
     display: flex;
     text-align: center;
     flex-direction: column;
@@ -412,7 +434,7 @@ a {
     }
 
   /* COMMON */
-    .text-preview, .icons-header, .notification, .search  {
+    .text-preview, .icons-header, .notification, .search, .name  {
         display: none;
     }
 
@@ -421,7 +443,7 @@ a {
     
     }
     
-    .messages-disp-left, .messages-disp-right {
+    .sent, .recived {
         margin: 0 1rem;
     } 
 
